@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import http from "http";
 
 import connectDb from "./database/db";
+import router from "./router";
 
 const app = express();
 dotenv.config();
@@ -20,4 +21,6 @@ const server = http.createServer(app);
 server.listen(port,():void=>{
     console.log(`server is listening on port:${port}`);
     connectDb();
-})
+});
+
+app.use("/",router());
